@@ -1,4 +1,5 @@
 # Sudoku Solver
+![sudoku.png](sudoku.png)
 
 It's a solver, for sudoku!
 
