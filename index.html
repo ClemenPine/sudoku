@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="main.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen select-none">
+    <div class="hidden">
+        <div id="valTemp" class="grid grid-cols-3 w-full h-full">
+            <button class="text-sm text-zinc-500 flex items-center justify-center hover:bg-zinc-100 disabled:opacity-0">1</button>
+            <button class="text-sm text-zinc-500 flex items-center justify-center hover:bg-zinc-100 disabled:opacity-0">2</button>
+            <button class="text-sm text-zinc-500 flex items-center justify-center hover:bg-zinc-100 disabled:opacity-0">3</button>
+            <button class="text-sm text-zinc-500 flex items-center justify-center hover:bg-zinc-100 disabled:opacity-0">4</button>
+            <button class="text-sm text-zinc-500 flex items-center justify-center hover:bg-zinc-100 disabled:opacity-0">5</button>
+            <button class="text-sm text-zinc-500 flex items-center justify-center hover:bg-zinc-100 disabled:opacity-0">6</button>
+            <button class="text-sm text-zinc-500 flex items-center justify-center hover:bg-zinc-100 disabled:opacity-0">7</button>
+            <button class="text-sm text-zinc-500 flex items-center justify-center hover:bg-zinc-100 disabled:opacity-0">8</button>
+            <button class="text-sm text-zinc-500 flex items-center justify-center hover:bg-zinc-100 disabled:opacity-0">9</button>
+        </div>
+    </div>
+    <div class="flex flex-col gap-2 h-full justify-center">
+        <div class="flex justify-between">
+            <div class="flex gap-1">
+                <button onclick="newGrid()" class="bg-zinc-300 rounded-md px-3 py-2">New</button>
+                <button onclick="stepGrid()" class="bg-zinc-300 rounded-md px-3 py-2">Step</button>
+                <button onclick="solveGrid()" class="bg-zinc-300 rounded-md px-3 py-2">Solve</button>
+            </div>
+            <div class="flex gap-1">
+                <button onclick="undoHistory()" class="bg-zinc-300 rounded-md px-3 py-2">Undo</button>
+                <button onclick="redoHistory()" class="bg-zinc-300 rounded-md px-3 py-2">Redo</button>
+            </div>
+        </div>
+        <div class="bg-zinc-700 h-3/4 aspect-square grid grid-cols-3 gap-0.5 p-0.5">
+            <div class="bg-zinc-400 grid grid-cols-3 gap-0.5">
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+            </div>
+            <div class="bg-zinc-400 grid grid-cols-3 gap-0.5">
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+            </div>
+            <div class="bg-zinc-400 grid grid-cols-3 gap-0.5">
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+            </div>
+            <div class="bg-zinc-400 grid grid-cols-3 gap-0.5">
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+            </div>
+            <div class="bg-zinc-400 grid grid-cols-3 gap-0.5">
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+            </div>
+            <div class="bg-zinc-400 grid grid-cols-3 gap-0.5">
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+            </div>
+            <div class="bg-zinc-400 grid grid-cols-3 gap-0.5">
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+            </div>
+            <div class="bg-zinc-400 grid grid-cols-3 gap-0.5">
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+            </div>
+            <div class="bg-zinc-400 grid grid-cols-3 gap-0.5">
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+                <div class="cell bg-zinc-200 flex items-center justify-center aspect-square"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
